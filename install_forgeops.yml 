@@ -1,0 +1,20 @@
+---
+
+# You can run this playbook like this:  ansible-playbook -i ./hosts install_forgeops.yml\
+
+- name: "Install and configure forgeops"
+  hosts: localhost
+  vars:
+    dev_dir: /Users/btumy/dev
+    forgeops_dir: "{{ dev_dir }}/forgeops"
+  connection: local
+    
+  tasks:
+  - name: "git clone forgeops if not already present"
+    command: "git clone https://github.com/ForgeRock/forgeops.git"
+    args:
+        chdir: "{{ dev_dir }}"
+        creates: "{{ forgeops_dir }}"
+    register: "output"
+
+  - debug: var=output.stdout_lines
