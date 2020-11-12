@@ -7,12 +7,12 @@
   vars:
     dev_dir: /Users/btumy/dev
     forgeops_dir: "{{ dev_dir }}/forgeops"
-    forgeops_url: https://github.com/ForgeRock/forgeops.git
+    forgeops_repo_url: https://github.com/ForgeRock/forgeops.git
   connection: local
     
   tasks:
   - name: "git clone forgeops if not already present"
-    command: "git clone {{ forgeops_url }}"
+    command: "git clone {{ forgeops_repo_url }}"
     args:
         chdir: "{{ dev_dir }}"
         creates: "{{ forgeops_dir }}"
