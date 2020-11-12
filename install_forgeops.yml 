@@ -1,21 +1,30 @@
 ---
-
 # You can run this playbook like this:  ansible-playbook -i ./hosts install_forgeops.yml\
 
 - name: "Install and configure forgeops"
   hosts: localhost
+  become: false
   vars:
     dev_dir: /Users/btumy/dev
     forgeops_dir: "{{ dev_dir }}/forgeops"
     forgeops_repo_url: https://github.com/ForgeRock/forgeops.git
+    brew_cask_packages:
+      - docker
+      - virtualbox
+    brew_packages:
+      - kubernetes-cli
+      - skaffold
+      - kustomize
+      - kubectx
+      - minikube
+    install_homebrew_if_missing: false
+    upgrade_homebrew_packages: false 
   connection: local
-    
-  tasks:
-  - name: "git clone forgeops if not already present"
-    command: "git clone {{ forgeops_repo_url }}"
-    args:
-        chdir: "{{ dev_dir }}"
-        creates: "{{ forgeops_dir }}"
-    register: "output"
 
-  - debug: var=output.stdout_lines
+  pre_tasks:
+    # - include: pre_tasks.yml
+  
+  tasks:
+    # - include: homebrew_tasks.yml
+    - include: clone_forgeops_repo.yml
+    - include: start_minikube.yml
