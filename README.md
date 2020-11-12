@@ -5,7 +5,7 @@
 * Install Homebrew 
 * Install Ansible (brew install Ansible)
 * Install packages required by ForgeRock:
-- docker (cask)
+** docker (cask)
 - kubernetes-cli
 - skaffold
 - kustomize
