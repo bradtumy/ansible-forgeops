@@ -1,0 +1,20 @@
+## Change the deployment namespace for the all environment from the default namespace to your namespace
+
+# cd /path/to/forgeops/kustomize/overlay/7.0/all
+# Open the kustomization.yaml file.
+# Modify two lines in the file so that the platform is deployed in your namespace:
+# namespace: default    namespace: my-namespace
+# FQDN: "default.iam.example.com" FQDN: "my-namespace.iam.example.com"
+
+- name: initialize the staging area 
+  command: "{{ forgeops_dir }}/bin/config.sh init --profile cdk --version 7.0"
+  register: "output"
+- debug: var=output.stdout_lines
+
+- name: Run Skaffold to build Docker images and deploy the ForgeRock Identity Platform
+  command: skaffold run
+  args:
+    chdir: "{{ forgeops_dir }}"
+  register: "output"
+
+- debug: var=output.stdout_lines
