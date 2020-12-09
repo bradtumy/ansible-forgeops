@@ -28,7 +28,7 @@
     - include: pre_tasks.yml
   
   tasks:
-    # - include: homebrew_tasks.yml
+    - include: homebrew_tasks.yml
     - include: clone_forgeops_repo.yml
     - include: minikube_setup.yml
     - include: deploy_forgeops.yml

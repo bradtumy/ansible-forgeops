@@ -16,6 +16,9 @@ On Host Machine: (e.g. your laptop)
 - virtualbox (cask)
 - minikube
 
+## Customize the environment
+Modify the inventory file "hosts" with the specific values for your enviroment.  You'll likely only need to change dev_home_dir and namespace.
+
 ## Usage 
 * You can run these playbooks like this:  
 ```bash
