@@ -33,3 +33,12 @@ ansible-playbook -i ./hosts start_forgeops_install.yml
 ```bash
 ansible-playbook -i ./hosts destroy_forgeops.yml
 ```
+
+## Manual Configuration
+Make sure you update your /etc/hosts with the ip from "minikube ip"
+Output:
+192.168.100.101
+
+cat /etc/hosts
+192.168.100.101 my-namespace.iam.example.com
+
