@@ -4,11 +4,13 @@
 - name: "Install and configure forgeops"
   hosts: localhost
   become: false
+  connection: local
   vars:
     # change this to match your environment 
-    dev_dir: /Users/btumy/dev
+    ansible_python_interpreter: '{{ ansible_playbook_python }}'
+    dev_dir: '{{ dev_home_dir }}'
     forgeops_dir: "{{ dev_dir }}/forgeops"
-    forgeops_repo_url: https://github.com/ForgeRock/forgeops.git
+    forgeops_repo_url: '{{ forgeops_url }}'
     brew_cask_packages:
       - docker
       - virtualbox
@@ -20,14 +22,13 @@
       - minikube
     install_homebrew_if_missing: false
     upgrade_homebrew_packages: false 
-    namespace_name: my-namespace
-  connection: local
-
+    namespace_name: '{{ namespace }}'
+  
   pre_tasks:
     - include: pre_tasks.yml
   
   tasks:
-    # - include: homebrew_tasks.yml
+    - include: homebrew_tasks.yml
     - include: clone_forgeops_repo.yml
     - include: minikube_setup.yml
     - include: deploy_forgeops.yml
