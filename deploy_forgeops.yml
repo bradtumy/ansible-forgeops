@@ -6,6 +6,12 @@
 # namespace: default    namespace: my-namespace
 # FQDN: "default.iam.example.com" FQDN: "my-namespace.iam.example.com"
 
+- name: Stop Skaffold from pushing Docker images to a remote Docker registry
+  command: skaffold config set --kube-context minikube local-cluster true
+  register: "output"
+
+- debug: var=output.stdout_lines
+
 - name: initialize the staging area 
   command: "{{ forgeops_dir }}/bin/config.sh init --profile cdk --version 7.0"
   register: "output"

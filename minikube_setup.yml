@@ -50,9 +50,3 @@
   register: "output"
 
 - debug: var=output.stdout_lines
-
-- name: Stop Skaffold from pushing Docker images to a remote Docker registry
-  command: skaffold config set --kube-context minikube local-cluster true
-  register: "output"
-
-- debug: var=output.stdout_lines
