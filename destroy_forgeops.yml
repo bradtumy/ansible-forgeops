@@ -15,14 +15,14 @@
       shell: eval $(minikube docker-env)
       register: "output"
 
-    - name: skaffold delete
+    - name: "Shutdown and delete from namespace"
       command: "skaffold delete"
       args:
         chdir: "{{ forgeops_dir }}"
       register: "output"
     - debug: var=output.stdout_lines
 
-    - name: kubectl delete pvc --all
+    - name: "Delete persistant volume claims (PVC) from namespace"
       command: kubectl delete pvc --all
       args:
         chdir: "{{ forgeops_dir }}"
