@@ -15,7 +15,10 @@
 - minikube
 
 ## Usage 
-* You can run this playbook like this:  
+* You can run these playbooks like this:  
 ```bash
 ansible-playbook -i ./hosts start_forgeops_install.yml
+```
+```bash
+ansible-playbook -i ./hosts destroy_forgeops.yml
 ```
