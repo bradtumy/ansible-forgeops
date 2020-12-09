@@ -26,7 +26,7 @@ clone this repo to your localhost
 Modify the inventory file "hosts" with the specific values for your enviroment.  You'll likely only need to change dev_home_dir and namespace.
 
 ## Usage 
-* You can run these playbooks like this:  
+You can run these playbooks like this:  
 ```bash
 ansible-playbook -i ./hosts start_forgeops_install.yml
 ```
