@@ -1,2 +1,2 @@
 ## content of hosts 
-localhost ansible_connction=local
+localhost ansible_connction=local ansible_python_interpreter=/usr/bin/python3

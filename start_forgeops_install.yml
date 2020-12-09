@@ -6,7 +6,8 @@
   become: false
   vars:
     # change this to match your environment 
-    dev_dir: /Users/btumy/dev
+    ansible_python_interpreter: '{{ ansible_playbook_python }}'
+    dev_dir: /Users/bradtumy/develop
     forgeops_dir: "{{ dev_dir }}/forgeops"
     forgeops_repo_url: https://github.com/ForgeRock/forgeops.git
     brew_cask_packages:

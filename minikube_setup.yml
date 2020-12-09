@@ -1,3 +1,16 @@
+- name: Check Minikube's status.
+  command: minikube status
+  register: minikube_status
+  changed_when: false
+  ignore_errors: true
+
+- debug: var=minikube_status.stdout_lines
+
+# Otherwise will start minikube
+- name: Start Minikube if it's not running.
+  command: minikube start --memory=12288 --cpus=3 --disk-size=40g --vm-driver=virtualbox --bootstrapper kubeadm --kubernetes-version=1.17.4
+  when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
+
 - name: "enable k8 engress"
   command: "minikube addons enable ingress"
   register: "output"

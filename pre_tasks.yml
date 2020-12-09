@@ -1,14 +1,10 @@
+- python_requirements_info:
+    dependencies:
+      - openshift
+      - requests
+
 - name: Ensuring Homebrew Is Installed
   stat:
     path: /usr/local/bin/brew
   register: homebrew_check
 
-- name: Check Minikube's status.
-  command: minikube status
-  register: minikube_status
-  changed_when: false
-  ignore_errors: true
-# Otherwise will start minikube
-- name: Start Minikube if it's not running.
-  command: minikube start --memory=4096 --cpus=2 --disk-size=40g --vm-driver=virtualbox --bootstrapper kubeadm --kubernetes-version=1.17.4
-  when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"

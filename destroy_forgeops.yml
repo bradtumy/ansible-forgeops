@@ -1,0 +1,32 @@
+---
+
+- name: "Cleanup & Destroy ForgeOps"
+  hosts: localhost
+  become: false
+  connection: local
+  vars:
+    ansible_python_interpreter: '{{ ansible_playbook_python }}'
+    dev_dir: /Users/bradtumy/develop
+    forgeops_dir: "{{ dev_dir }}/forgeops"
+    namespace_name: my-namespace
+
+  tasks:
+    - name: Set Up Your Local Computer to Use Minikube’s Docker Engine
+      shell: eval $(minikube docker-env)
+      register: "output"
+
+    - name: skaffold delete
+      command: "skaffold delete"
+      args:
+        chdir: "{{ forgeops_dir }}"
+      register: "output"
+    - debug: var=output.stdout_lines
+
+    - name: kubectl delete pvc --all
+      command: kubectl delete pvc --all
+      args:
+        chdir: "{{ forgeops_dir }}"
+      register: "output"
+
+    - debug: var=output.stdout_lines
+ 
