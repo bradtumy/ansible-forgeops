@@ -2,7 +2,7 @@
 
 ForgeOps is a collection of ForgeRock resources to help you get started in the cloud. These resources demonstrate how to deploy the ForgeRock Identity Platform on Kubernetes. 
 
-Use this playbook to install forgeops on your local workstation where you have minikube running (or where you can install minikube).
+Use this playbook to have Ansible install forgeops on your local workstation where you have minikube running (or where you can install minikube).
 
 ## Prerequisites
 
@@ -40,5 +40,5 @@ Output:
 192.168.100.101
 
 cat /etc/hosts
-192.168.100.101 my-namespace.iam.example.com
+192.168.100.101 my-namespace.iam.example.com 
 
