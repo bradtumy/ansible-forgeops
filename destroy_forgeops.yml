@@ -6,9 +6,9 @@
   connection: local
   vars:
     ansible_python_interpreter: '{{ ansible_playbook_python }}'
-    dev_dir: /Users/bradtumy/develop
+    dev_dir: '{{ dev_home_dir }}'
     forgeops_dir: "{{ dev_dir }}/forgeops"
-    namespace_name: my-namespace
+    namespace_name: '{{ namespace }}'
 
   tasks:
     - name: Set Up Your Local Computer to Use Minikube’s Docker Engine

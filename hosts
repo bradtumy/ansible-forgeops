@@ -1,2 +1,9 @@
 ## content of hosts 
-localhost ansible_connction=local ansible_python_interpreter=/usr/bin/python3
+all:
+    hosts:
+        localhost:
+            ansible_connction: local 
+            ansible_python_interpreter: /usr/bin/python3
+            dev_home_dir: /Users/bradtumy/develop
+            forgeops_url : https://github.com/ForgeRock/forgeops.git
+            namespace: my-namespace

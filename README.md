@@ -2,6 +2,8 @@
 
 
 ## Prerequisites
+
+On Host Machine: (e.g. your laptop)
 * Install Homebrew 
 * pip install openshift 
 * Install Ansible (brew install Ansible)
