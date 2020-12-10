@@ -7,3 +7,5 @@ all:
             dev_home_dir: /Users/bradtumy/develop
             forgeops_url : https://github.com/ForgeRock/forgeops.git
             namespace: my-namespace
+            mini_kube_specs: "--memory=12288 --cpus=3 --disk-size=40g --vm-driver=virtualbox --bootstrapper kubeadm --kubernetes-version=1.17.4"
+            forgeops_version: "7.0"
