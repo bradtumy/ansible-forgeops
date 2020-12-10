@@ -8,10 +8,10 @@
 
 # Otherwise will start minikube
 - name: Start Minikube if it's not running.
-  command: minikube start --memory=12288 --cpus=3 --disk-size=40g --vm-driver=virtualbox --bootstrapper kubeadm --kubernetes-version=1.17.4
+  command: minikube start "{{ mini_kube_specs }}"
   when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
 
-- name: "enable k8 engress"
+- name: "Enable k8 engress"
   command: "minikube addons enable ingress"
   register: "output"
 
@@ -19,13 +19,13 @@
 
 # workaround for Minikube issue 1568. The workaround lets pods deployed on Minikube reach themselves on the network.
 # minikube ssh sudo ip link set docker0 promisc on
-- name: "workaround for Minikube issue 1568"
+- name: "Workaround for Minikube issue 1568"
   command: "minikube ssh sudo ip link set docker0 promisc on"
   register: "output"
 
 - debug: var=output.stdout_lines
 
-- name: create namespace
+- name: Create namespace
   k8s:
     name: "{{ namespace_name }}"
     api_version: v1
