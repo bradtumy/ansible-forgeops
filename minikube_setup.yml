@@ -8,8 +8,11 @@
 
 # Otherwise will start minikube
 - name: Start Minikube if it's not running.
-  command: minikube start "{{ mini_kube_specs }}"
+  command: 'minikube start {{ mini_kube_specs }}'
+  register: "output"
   when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
+  
+- debug: var=output.stdout_lines
 
 - name: "Enable k8 engress"
   command: "minikube addons enable ingress"

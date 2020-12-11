@@ -13,7 +13,7 @@
 - debug: var=output.stdout_lines
 
 - name: initialize the staging area 
-  command: "{{ forgeops_dir }}/bin/config.sh init --profile cdk --version {{ forgeops_version }}"
+  command: '{{ forgeops_dir }}/bin/config.sh init --profile cdk --version {{ forgeops_version }}'
   register: "output"
 - debug: var=output.stdout_lines
 

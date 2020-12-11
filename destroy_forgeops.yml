@@ -29,4 +29,16 @@
       register: "output"
 
     - debug: var=output.stdout_lines
+
+    - name: "Stop and Delete the Minikube Cluster"
+      command: minikube stop
+      register: "output"
+
+    - debug: var=output.stdout_lines
+
+    - name: Delete the Minikube Cluster 
+      command: minikube delete
+      register: "output"
+    
+    - debug: var=output.stdout_lines
  
